@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\DataPaketController;
+use App\Http\Controllers\admin\DataTentorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MobilController;
@@ -32,4 +34,19 @@ Route::middleware(['auth'])->group(function () {
 
     //admin
     Route::get('/beranda', [HomeController::class, 'index']);
+
+    Route::get('/data-paket', [DataPaketController::class, 'index']);
+    Route::get('/data-paket/tambah', [DataPaketController::class, 'tambah']);
+    Route::post('/data-paket/tambah', [DataPaketController::class, 'store']);
+    Route::get('/data-paket/{id}/edit', [DataPaketController::class, 'edit']);
+    Route::post('/data-paket/{id}/edit', [DataPaketController::class, 'update']);
+    Route::get('/data-paket/{id}/hapus', [DataPaketController::class, 'delete']);
+    
+    Route::get('/data-tentor', [DataTentorController::class, 'index']);
+    Route::get('/data-tentor/tambah', [DataTentorController::class, 'tambah']);
+    Route::post('/data-tentor/tambah', [DataTentorController::class, 'store']);
+    Route::get('/data-tentor/{id}/edit', [DataTentorController::class, 'edit']);
+    Route::post('/data-tentor/{id}/edit', [DataTentorController::class, 'update']);
+    Route::get('/data-tentor/{id}/hapus', [DataTentorController::class, 'delete']);
+
 });
