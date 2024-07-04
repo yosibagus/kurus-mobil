@@ -110,7 +110,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{ url('transaksi') }}" class="menu-link">
+                            <a href="{{ url('daftar-pesanan') }}" class="menu-link">
                                 Daftar Pesanan
                             </a>
                         </li>

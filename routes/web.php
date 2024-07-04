@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\DaftarPesananController;
 use App\Http\Controllers\admin\DataPaketController;
 use App\Http\Controllers\admin\DataTentorController;
 use App\Http\Controllers\admin\DataUserController;
@@ -70,4 +71,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/data-akun/{role}', [DataUserController::class, 'index']);
     Route::get('/data-akun/{role}/tambah', [DataUserController::class, 'tambah']);
     Route::post('/data-akun/{role}/tambah', [DataUserController::class, 'store']);
+
+    Route::get('/daftar-pesanan', [DaftarPesananController::class, 'index']);
+    Route::post('/daftar-pesanan/{id}', [DaftarPesananController::class, 'update']);
+    Route::get('/daftar-pesanan/selesai/{id}', [DaftarPesananController::class, 'selesai']);
 });

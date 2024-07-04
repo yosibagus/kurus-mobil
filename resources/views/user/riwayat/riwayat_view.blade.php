@@ -41,43 +41,44 @@
         <div class="container">
             <div class="notification-content">
                 @foreach ($transaksi as $get)
-                <a href="{{ url('transaksi/' . $get->no_transaksi) }}">
-                    <div class="card">
-                        <div class="card-body" style="padding: 0">
-                            <div class="notification" style="margin: 0;">
-                                <h6>#{{ $get->no_transaksi }}</h6>
-                                <p>{{ $get->nama_paket }}</p>
-                                <div class="notification-footer">
-                                    <span>
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
-                                                stroke="#787878" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M6 3V6L8 7" stroke="#787878" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        {{ $get->tgl_pesan }}
-                                    </span>
-                                    <p class="mb-0">
-                                        @if ($get->status_bayar != 'settlement')
-                                        @if (Carbon::now()->greaterThan($get->batas_pembayaran))
-                                            <span class="badge bg-danger">Kardaluarsa</span>
-                                        @else
-                                            {!! $get->status_bayar == 'settlement'
-                                                ? '<span class="badge bg-success">Berhasil</span>'
-                                                : '<span class="badge bg-primary">Pending</span>' !!}
-                                        @endif
-                                    @else
-                                        {!! $get->status_bayar == 'settlement'
-                                            ? '<span class="badge bg-success">Berhasil</span>'
-                                            : '<span class="badge bg-primary">Pending</span>' !!}
-                                    @endif
-                                    </p>
+                    <a href="{{ url('transaksi/' . $get->no_transaksi) }}">
+                        <div class="card">
+                            <div class="card-body" style="padding: 0">
+                                <div class="notification" style="margin: 0;">
+                                    <h6>#{{ $get->no_transaksi }}</h6>
+                                    <p>{{ $get->nama_paket }}</p>
+                                    <div class="notification-footer">
+                                        <span>
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                                                    stroke="#787878" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6 3V6L8 7" stroke="#787878" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            {{ $get->tgl_pesan }}
+                                        </span>
+                                        <p class="mb-0">
+                                            @if ($get->status_bayar != 'settlement')
+                                                @if (Carbon::now()->greaterThan($get->batas_pembayaran))
+                                                    <span class="badge bg-danger">Kardaluarsa</span>
+                                                @else
+                                                    {!! $get->status_bayar == 'settlement'
+                                                        ? '<span class="badge bg-success">Berhasil</span>'
+                                                        : '<span class="badge bg-primary">Pending</span>' !!}
+                                                @endif
+                                            @else
+                                                {!! $get->status_bayar == 'settlement'
+                                                    ? '<span class="badge bg-success">Berhasil</span>'
+                                                    : '<span class="badge bg-primary">Pending</span>' !!}
+                                            @endif
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 @endforeach
             </div>
         </div>
