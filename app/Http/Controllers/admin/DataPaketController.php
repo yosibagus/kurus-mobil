@@ -24,8 +24,8 @@ class DataPaketController extends Controller
         $gambar = $request->file('gambar');
         $logo = $request->file('logo');
 
-        $file_gambar = 'gambar-' . uniqid() . $gambar->getClientOriginalExtension();
-        $file_logo = 'logo-' . uniqid() . $logo->getClientOriginalExtension();
+        $file_gambar = 'gambar-' . uniqid() . '.' . $gambar->getClientOriginalExtension();
+        $file_logo = 'logo-' . uniqid() . '.' . $logo->getClientOriginalExtension();
 
         $data = [
             'nama_paket' => $request->nama_paket,
@@ -59,7 +59,7 @@ class DataPaketController extends Controller
 
         if ($request->file('gambar') != '') {
             $gambar = $request->file('gambar');
-            $file_gambar = 'gambar-' . uniqid() . $gambar->getClientOriginalExtension();
+            $file_gambar = 'gambar-' . uniqid() . '.'. $gambar->getClientOriginalExtension();
             $gambar->move('logo', $file_gambar);
         } else {
             $file_gambar = $paket->gambar;
@@ -67,7 +67,7 @@ class DataPaketController extends Controller
 
         if ($request->file('logo') != '') {
             $logo = $request->file('logo');
-            $file_logo = 'logo-' . uniqid() . $logo->getClientOriginalExtension();
+            $file_logo = 'logo-' . uniqid() . '.'. $logo->getClientOriginalExtension();
             $logo->move('logo', $file_logo);
         } else {
             $file_logo = $paket->logo;

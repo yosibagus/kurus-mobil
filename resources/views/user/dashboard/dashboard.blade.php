@@ -1,15 +1,19 @@
 @extends('user.layout.layout')
 
+@section('header')
+    @include('user.layout.header_transparant')
+@endsection
+
 @section('content')
     <!-- Banner -->
     <div class="banner-wrapper author-notification">
         <div class="container inner-wrapper">
             <div class="dz-info">
-                <span>Selamat Pagi</span>
+                <span>{{ $ucapan }}</span>
                 <h2 class="name mb-0">{{ Auth::user()->nama_lengkap }}</h2>
             </div>
             <div class="dz-media media-45 rounded-circle">
-                <a href="profile.html">
+                <a href="{{ url('profil-user') }}">
                     <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
                         class="rounded-circle" alt="author-image">
                 </a>
@@ -46,7 +50,7 @@
                                             </g>
                                         </svg>
                                         <div class="card-info">
-                                            <h4 class="title">0</h4>
+                                            <h4 class="title">{{ $selesai }}</h4>
                                             <p>Selesai</p>
                                         </div>
                                     </div>
@@ -70,8 +74,8 @@
                                         </svg>
 
                                         <div class="card-info">
-                                            <h4 class="title">0</h4>
-                                            <p>Diproses</p>
+                                            <h4 class="title">{{ $proses }}</h4>
+                                            <p>Proses</p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +87,7 @@
                     <!-- Recent Jobs -->
                     <div class="title-bar">
                         <h5 class="dz-title">Daftar Paket</h5>
-                        <a class="btn btn-sm text-primary" href="search.html">Selengkapnya</a>
+                        <a class="btn btn-sm text-primary" href="{{ url('paket') }}">Selengkapnya</a>
                     </div>
                     <div class="list item-list recent-jobs-list">
                         <ul>
@@ -95,7 +99,7 @@
                                         </a>
                                         <div class="item-inner">
                                             <div class="item-title-row">
-                                                <div class="item-subtitle">Daihatsu</div>
+                                                {{-- <div class="item-subtitle">Daihatsu</div> --}}
                                                 <h6 class="item-title">
                                                     <a href="job-detail.html">{{ $get->nama_paket }}</a>
                                                 </h6>
@@ -109,6 +113,12 @@
                                                 </svg>
                                                 <div class="item-price">Rp {{ number_format($get->harga_paket, 0, 2, '.') }}
                                                 </div>
+
+
+                                            </div>
+                                            <div>
+                                                <a href="{{ url('pesan/' . $get->id_paket) }}">Lihat Detail <i
+                                                        class="bi bi-arrow-right"></i></a>
                                             </div>
                                         </div>
                                     </div>

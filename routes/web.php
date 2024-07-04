@@ -2,10 +2,15 @@
 
 use App\Http\Controllers\admin\DataPaketController;
 use App\Http\Controllers\admin\DataTentorController;
+use App\Http\Controllers\admin\DataUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\user\PaketController;
+use App\Http\Controllers\user\PesanController;
+use App\Http\Controllers\user\ProfilUserController;
+use App\Http\Controllers\user\RiwayatController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -30,6 +35,19 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     //user
     Route::get('/home', [DashboardController::class, 'index']);
+    Route::get('/riwayat', [RiwayatController::class, 'index']);
+
+    Route::get('/paket', [PaketController::class, 'index']);
+
+    Route::get('/profil-user', [ProfilUserController::class, 'index']);
+    Route::post('/profil-user', [ProfilUserController::class, 'update']);
+
+    Route::get('/pesan/{id}', [PesanController::class, 'index']);
+    Route::post('/pesan/{id}', [PesanController::class, 'pemesanan']);
+    Route::get('/transaksi/{id}', [PesanController::class, 'pesan']);
+    Route::get('/transaksi/checkout/{id}', [PesanController::class, 'pembayaran']);
+    Route::get('/getsnap/{id}', [PesanController::class, 'checkout']);
+   
     Route::get('/logout', [LoginController::class, 'logout']);
 
     //admin
@@ -48,5 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/data-tentor/{id}/edit', [DataTentorController::class, 'edit']);
     Route::post('/data-tentor/{id}/edit', [DataTentorController::class, 'update']);
     Route::get('/data-tentor/{id}/hapus', [DataTentorController::class, 'delete']);
-
+    
+    Route::get('/data-akun/{role}', [DataUserController::class, 'index']);
+    Route::get('/data-akun/{role}/tambah', [DataUserController::class, 'tambah']);
+    Route::post('/data-akun/{role}/tambah', [DataUserController::class, 'store']);
 });

@@ -22,7 +22,7 @@ class DataTentorController extends Controller
     public function store(Request $request)
     {
         $foto = $request->file('foto');
-        $file_name = uniqid() . $foto->getClientOriginalExtension();
+        $file_name = uniqid() . '.' . $foto->getClientOriginalExtension();
 
         $data = [
             'nama_tentor' => $request->nama_tentor,
@@ -46,7 +46,7 @@ class DataTentorController extends Controller
     {
         if ($request->file('foto') != '') {
             $foto = $request->file('foto');
-            $file_name = uniqid() . $foto->getClientOriginalExtension();
+            $file_name = uniqid() . '.' . $foto->getClientOriginalExtension();
             $data = [
                 'nama_tentor' => $request->nama_tentor,
                 'tanggal_lahir' => $request->tanggal_lahir,

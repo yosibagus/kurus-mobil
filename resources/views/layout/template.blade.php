@@ -90,13 +90,13 @@
                             </a>
                         </li>
                         <li class="menu-item mb-0">
-                            <a href="crypto.html" class="menu-link">
-                                Data Customer
+                            <a href="{{ url('data-akun/user') }}" class="menu-link">
+                                Data User
                             </a>
                         </li>
                         <li class="menu-item mb-0">
-                            <a href="help-support-desk.html" class="menu-link">
-                                Data User/Admin
+                            <a href="{{ url('data-akun/admin') }}" class="menu-link">
+                                Data Admin
                             </a>
                         </li>
 
@@ -110,7 +110,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="file-manager.html" class="menu-link">
+                            <a href="{{ url('transaksi') }}" class="menu-link">
                                 Daftar Pesanan
                             </a>
                         </li>
@@ -124,7 +124,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="invoice-list.html" class="menu-link">
+                            <a href="{{ url('laporan') }}" class="menu-link">
                                 Data Laporan
                             </a>
                         </li>

@@ -1,7 +1,7 @@
 // Register Service worker to control making site work offline
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker
-	.register('app.js')
+	.register('/mobile-app/app.js')
 	.then(() => { console.log('Service Worker Registered'); });
 }
 
