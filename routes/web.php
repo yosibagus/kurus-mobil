@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\DaftarPesananController;
 use App\Http\Controllers\admin\DataPaketController;
 use App\Http\Controllers\admin\DataTentorController;
 use App\Http\Controllers\admin\DataUserController;
+use App\Http\Controllers\DataLaporanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MobilController;
@@ -75,4 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/daftar-pesanan', [DaftarPesananController::class, 'index']);
     Route::post('/daftar-pesanan/{id}', [DaftarPesananController::class, 'update']);
     Route::get('/daftar-pesanan/selesai/{id}', [DaftarPesananController::class, 'selesai']);
+
+    Route::get('/laporan', [DataLaporanController::class, 'index']);
+    Route::post('/laporan', [DataLaporanController::class, 'generateLaporan']);
 });

@@ -13,6 +13,16 @@ class PesananModel extends Model
     protected $table = "tb_pesanan";
     protected $guarded = [];
 
+    public static function getFilterDataPesanan($start, $end)
+    {
+        $query = DB::table('tb_pesanan')
+            ->join('tb_paket', 'tb_paket.id_paket', '=', 'tb_pesanan.paket_id')
+            ->join('users', 'users.id', '=', 'tb_pesanan.user_id')
+            ->whereBetween(DB::raw('DATE(tgl_pesan)'), [$start, $end])
+            ->orderBy('tb_pesanan.tgl_pesan', 'DESC');
+        return $query;
+    }
+
     public static function getAllDataPesanan()
     {
         $query = DB::table('tb_pesanan')
