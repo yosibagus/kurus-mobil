@@ -3,6 +3,11 @@
 @endphp
 @extends('layout.template')
 
+@if (isset($orders))
+    <title>Laporan Pesanan dari {{ date('d-m-Y', strtotime($startDate)) }} sd
+        {{ date('d-m-Y', strtotime($endDate)) }} </title>
+@endif
+
 @section('content')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
@@ -70,6 +75,13 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td colspan="4"></td>
+                                    <td>Rp{{ number_format($sum, 0, 2, '.') }}</td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 @endif
@@ -90,9 +102,31 @@
         $(document).ready(function() {
             $('#orderTable').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
+                buttons: [{
+                        extend: 'excel',
+                        footer: true,
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            $('row:last c', sheet).attr('s', '25'); // Styling for the last row
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        footer: true,
+                        customize: function(doc) {
+                            doc.styles.tableFooter = {
+                                bold: true,
+                                fontSize: 11,
+                                alignment: 'center'
+                            };
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        footer: true
+                    }
+                ],
+                footer: true
             });
         });
     </script>

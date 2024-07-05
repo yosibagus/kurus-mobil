@@ -18,7 +18,7 @@ class DataLaporanController extends Controller
         $endDate = $request->input('end_date');
 
         $orders = PesananModel::getFilterDataPesanan($startDate, $endDate)->get();
-
-        return view('admin.laporan.laporan', compact('orders', 'startDate', 'endDate'));
+        $sum = PesananModel::getFilterDataPesanan($startDate, $endDate)->sum('tb_pesanan.total');
+        return view('admin.laporan.laporan', compact('orders', 'startDate', 'endDate', 'sum'));
     }
 }

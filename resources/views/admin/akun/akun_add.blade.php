@@ -29,7 +29,7 @@
                     <label for="no_hp" class="form-label label">Nomor HP/WhatsApp</label>
                     <div class="position-relative">
                         <input type="number" class="form-control h-58 ps-5" id="no_hp"
-                            placeholder="Masukkan harga paket" name="no_hp" required>
+                            placeholder="Masukkan No Hp" name="no_hp" required>
                         <div class="invalid-feedback">
                             Tidak boleh kosong.
                         </div>

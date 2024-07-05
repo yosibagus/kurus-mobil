@@ -7,14 +7,21 @@ use App\Models\PaketModel;
 use App\Models\PesananModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $paket = PaketModel::where('status_mobil', 'Ready')->get();
-        $proses = PesananModel::where('status_pelatihan', 'proses')->count();
-        $selesai = PesananModel::where('status_pelatihan', 'selesai')->count();
+        $proses = PesananModel::where([
+            ['status_pelatihan', '=', 'proses'],
+            ['user_id', '=', Auth::user()->id]
+        ])->count();
+        $selesai = PesananModel::where([
+            ['status_pelatihan', '=', 'selesai'],
+            ['user_id', '=', Auth::user()->id]  
+        ])->count();
         $ucapan = $this->getGreeting();
         return view('user.dashboard.dashboard', compact('paket', 'proses', 'selesai', 'ucapan'));
     }
