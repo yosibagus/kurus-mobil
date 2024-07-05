@@ -44,7 +44,7 @@
                 <span class="d-inline-block">U</span>
                 <span class="d-inline-block">R</span>
                 <span class="d-inline-block">S</span>
-                <span class="d-inline-block">E</span>
+                <span class="d-inline-block">EE</span>
             </div>
         </div>
     </div>
