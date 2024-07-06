@@ -40,9 +40,54 @@
                                     <td>{{ $get->alamat }}</td>
                                     <td>{{ $get->email }}</td>
                                     <td>
-
+                                        <div class="dropdown action-opt">
+                                            <button class="btn bg p-0" type="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <i data-feather="more-horizontal"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end bg-white border box-shadow">
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('data-akun/' . $get->role . '/' . $get->id . '/edit') }}">
+                                                        <i data-feather="edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#" type="buttom"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#hapus-user-{{ $get->id }}">
+                                                        <i data-feather="trash-2"></i>
+                                                        Hapus
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
+                                {{-- modal hapus --}}
+                                <div class="modal fade" id="hapus-user-{{ $get->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Peringatan!</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Hapus Pengguna <b>{{ $get->nama_lengkap }}</b> secara permanen?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger text-white"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <a href="{{ url('data-akun/' . $get->id . '/hapus') }}"
+                                                    class="btn btn-primary text-white">Ya! Hapus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>

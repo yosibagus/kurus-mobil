@@ -29,6 +29,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::get('/user', [LoginController::class, 'login_user']);
     Route::post('/', [LoginController::class, 'login']);
     Route::get('/registrasi', [LoginController::class, 'registrasi']);
     Route::post('/registrasi', [LoginController::class, 'store']);
@@ -72,6 +73,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/data-akun/{role}', [DataUserController::class, 'index']);
     Route::get('/data-akun/{role}/tambah', [DataUserController::class, 'tambah']);
     Route::post('/data-akun/{role}/tambah', [DataUserController::class, 'store']);
+    Route::get('/data-akun/{role}/{id}/edit', [DataUserController::class, 'edit']);
+    Route::post('/data-akun/{role}/{id}/edit', [DataUserController::class, 'update']);
+    Route::get('/data-akun/{id}/hapus', [DataUserController::class, 'delete']);
 
     Route::get('/daftar-pesanan', [DaftarPesananController::class, 'index']);
     Route::post('/daftar-pesanan/{id}', [DaftarPesananController::class, 'update']);
