@@ -19,14 +19,14 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    { 
+    {
         $infologin = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
         if (Auth::attempt($infologin)) {
-            if(Auth::user()->role == 'user') {
+            if (Auth::user()->role == 'user') {
                 return redirect('home');
             } else {
                 return redirect('beranda');
@@ -53,12 +53,12 @@ class LoginController extends Controller
         ];
 
         User::create($data);
-        return redirect('/');
+        return redirect('/user');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/user');
     }
 }
