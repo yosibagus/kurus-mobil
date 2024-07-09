@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="d-sm-flex justify-content-between mb-4">
-                            <a href=""
+                            <a href="{{ url('lupa-password') }}"
                                 class="fs-16 text-primary text-decoration-none mt-2 mt-sm-0 d-block">
                                 Lupa Password?
                             </a>
