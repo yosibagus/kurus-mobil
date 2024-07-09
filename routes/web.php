@@ -29,7 +29,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
-    Route::get('/user', [LoginController::class, 'login_user']);
+    Route::get('/user', [LoginController::class, 'login_user'])->name('login');
+    Route::post('/user', [LoginController::class, 'login']);
     Route::post('/', [LoginController::class, 'login']);
     Route::get('/registrasi', [LoginController::class, 'registrasi']);
     Route::post('/registrasi', [LoginController::class, 'store']);

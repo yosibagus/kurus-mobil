@@ -56,13 +56,13 @@ class LoginController extends Controller
         ];
 
         User::create($data);
-        return redirect('/');
+        return redirect('/user');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/user');
     }
 
     public function lupa()

@@ -27,11 +27,22 @@
     <div class="preloader" id="preloader">
         <div class="preloader">
             <div class="waviy position-relative">
-                <span class="d-inline-block">F</span>
-                <span class="d-inline-block">A</span>
+                <span class="d-inline-block">E</span>
+                <span class="d-inline-block">-</span>
+                <span class="d-inline-block">D</span>
                 <span class="d-inline-block">R</span>
+                <span class="d-inline-block">I</span>
+                <span class="d-inline-block">V</span>
+                <span class="d-inline-block">I</span>
+                <span class="d-inline-block">N</span>
+                <span class="d-inline-block">G</span>
+                <span class="d-inline-block"></span>
+                <span class="d-inline-block">C</span>
                 <span class="d-inline-block">O</span>
-                <span class="d-inline-block">L</span>
+                <span class="d-inline-block">U</span>
+                <span class="d-inline-block">R</span>
+                <span class="d-inline-block">S</span>
+                <span class="d-inline-block">E</span>
             </div>
         </div>
     </div>
@@ -47,13 +58,7 @@
                 <div class="col-md-5">
                     <form method="POST" action="">
                         @csrf
-                        <div class="d-flex align-items-center gap-4 mb-3">
-                            <h4 class="fs-3 mb-0">Login.</h4>
-                            <a href="index.html">
-                                <img src="/assets/images/logo.svg" alt="logo">
-                            </a>
-                        </div>
-                        <p class="fs-18 mb-5">Masukkan email dan password untuk login</p>
+                        
                         <span class="d-block fs-18 fw-semibold text-center or mb-4">
                             <span class="bg-body-bg d-inline-block py-1 px-3">Administrator</span>
                         </span>
@@ -61,14 +66,14 @@
                             <div class="card-body p-4">
                                 <div class="form-group mb-4">
                                     <label class="label">Email</label>
-                                    <input type="email" class="form-control h-58" name="email" placeholder="envytheme@info.com">
+                                    <input type="email" class="form-control h-58" name="email" placeholder="Masukkan Email Anda">
                                 </div>
                                 <div class="form-group mb-0">
                                     <label class="label">Password</label>
                                     <div class="form-group">
                                         <div class="password-wrapper position-relative">
                                             <input type="password" id="password" name="password" class="form-control h-58 text-dark"
-                                                value="" placeholder="***********">
+                                                value="" placeholder="Masukkan Password Anda">
                                             <i style="color: #A9A9C8; font-size: 16px; right: 15px !important;"
                                                 class="ri-eye-off-line password-toggle-icon translate-middle-y top-50 end-0 position-absolute"
                                                 aria-hidden="true"></i>
