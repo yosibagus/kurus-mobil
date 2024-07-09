@@ -51,8 +51,19 @@
             <!-- Banner -->
             <div class="banner-wrapper shape-1">
                 <div class="container inner-wrapper">
-                    <h2 class="dz-title">Masuk</h2>
-                    <p class="mb-0">Masukkan Email dan Password untuk masuk.</p>
+                    <h2 class="dz-title">Pemulihan Akun</h2>
+                    <p class="mb-0">Masukkan email untuk verifikasi.</p>
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-error">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                 </div>
             </div>
             <!-- Banner End -->
@@ -65,20 +76,11 @@
                             <input type="email" placeholder="Email" name="email" class="form-control">
                         </div>
                         <div class="input-group">
-                            <input type="password" placeholder="Password" id="password" name="password"
-                                class="form-control be-0">
-                            <span class="input-group-text show-pass" id="togglePassword">
-                                <i class="fa fa-eye-slash"></i>
-                                <i class="fa fa-eye"></i>
-                            </span>
-                        </div>
-                        <a href="{{ url('lupa-password') }}" class="btn-link d-block text-center">Lupa Password?</a>
-                        <div class="input-group">
-                            <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">Masuk</button>
+                            <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">Kirim</button>
                         </div>
                     </form>
                     <div class="text-center p-tb20">
-                        <span class="saprate">Atau Registrasi?</span>
+                        <span class="saprate">Kembali ke login?</span>
                     </div>
                 </div>
             </div>
@@ -88,8 +90,7 @@
         <!-- Footer -->
         <footer class="footer fixed">
             <div class="container">
-                <a href="{{ url('registrasi') }}" class="btn btn-primary light btn-rounded text-primary d-block">Buat
-                    Akun</a>
+                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Login</a>
             </div>
         </footer>
         <!-- Footer End -->
