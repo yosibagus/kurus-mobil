@@ -73,14 +73,14 @@
                     <form class="" method="POST" action="">
                         @csrf
                         <div class="input-group">
-                            <input type="email" placeholder="Email" name="email" class="form-control">
+                            <input type="email" placeholder="Email" name="email" class="form-control" required>
                         </div>
                         <div class="input-group">
                             <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">Kirim</button>
                         </div>
                     </form>
                     <div class="text-center p-tb20">
-                        <span class="saprate">Kembali ke login?</span>
+                        <span class="saprate">Atau</span>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
         <!-- Footer -->
         <footer class="footer fixed">
             <div class="container">
-                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Login</a>
+                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali ke Login</a>
             </div>
         </footer>
         <!-- Footer End -->

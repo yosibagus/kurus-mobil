@@ -66,8 +66,9 @@
                             <div class="card-body p-4">
                                 <div class="form-group mb-4">
                                     <label class="label">Email</label>
-                                    <input type="email" class="form-control h-58" name="email" placeholder="Masukkan Email Anda">
+                                    <input type="email" class="form-control h-58" name="email" placeholder="Masukkan Email Anda" required>
                                 </div>
+                                
                                 <div class="form-group mb-0">
                                     <label class="label">Password</label>
                                     <div class="form-group">
@@ -88,10 +89,19 @@
                                 Lupa Password?
                             </a>
                         </div>
+                        
                         <button type="submit"
                             class="btn btn-primary fs-16 fw-semibold text-dark heading-fornt py-2 py-md-3 px-4 text-white w-100">
                             Login
                         </button>
+                        <br>
+                        <br>
+                        <button type="reset"
+                            class="btn btn-warning fs-16 fw-semibold text-dark heading-fornt py-2 py-md-3 px-4 w-100">
+                            Reset
+                        </button>
+                        
+                        
                     </form>
                 </div>
             </div>

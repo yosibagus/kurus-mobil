@@ -27,6 +27,7 @@ class DataUserController extends Controller
             'alamat' => $request->alamat,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'hint' => $request->password,
             'role' => $role,
         ];
 

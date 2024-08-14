@@ -62,11 +62,11 @@
                     <form class="" method="POST" action="">
                         @csrf
                         <div class="input-group">
-                            <input type="email" placeholder="Email" name="email" class="form-control">
+                            <input type="email" placeholder="Email" name="email" class="form-control" required>
                         </div>
                         <div class="input-group">
                             <input type="password" placeholder="Password" id="password" name="password"
-                                class="form-control be-0">
+                                class="form-control be-0" required>
                             <span class="input-group-text show-pass" id="togglePassword">
                                 <i class="fa fa-eye-slash"></i>
                                 <i class="fa fa-eye"></i>
@@ -74,7 +74,9 @@
                         </div>
                         <a href="{{ url('lupa-password') }}" class="btn-link d-block text-center">Lupa Password?</a>
                         <div class="input-group">
-                            <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">Masuk</button>
+                            <button type="submit" class="btn mt-2 btn-primary w-50 btn-rounded">Masuk</button>
+                            <br>
+                            <button type="reset" class="btn mt-2 btn-secondary w-50 btn-rounded">Reset</button>
                         </div>
                     </form>
                     <div class="text-center p-tb20">
@@ -127,6 +129,7 @@
             });
         });
     </script>
+    
 </body>
 
 </html>

@@ -82,7 +82,7 @@ class LoginController extends Controller
                 $mail->isSMTP();   //Send using SMTP
                 $mail->Host       = 'smtp.gmail.com'; //hostname/domain yang dipergunakan untuk setting smtp
                 $mail->SMTPAuth   = true;  //Enable SMTP authentication
-                $mail->Username   = 'bemkmunibamadura2024@gmail.com'; //SMTP username
+                $mail->Username   = 'eky.student@unibamadura.ac.id'; //SMTP username
                 $mail->Password   = 'hljawxhnvrvxorhf';   //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;   //Enable implicit TLS encryption
                 $mail->Port       = 465;   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -91,7 +91,7 @@ class LoginController extends Controller
                 $tujuan = $user->first()->email;
 
                 //Recipients
-                $mail->setFrom('bemkmunibamadura2024@gmail.com', 'KURSUS BAYANGKARA 2');
+                $mail->setFrom('eky.student@unibamadura.ac.id', 'KURSUS BAYANGKARA 2');
                 $mail->addAddress($tujuan, $nama);     //email tujuan
                 #$mail->addReplyTo('emailtujuan@domainaddreply.com', 'Information'); //email tujuan add reply (bila tidak dibutuhkan bisa diberi pagar)
                 #$mail->addCC('emailtujuan@domaincc.com'); // email cc (bila tidak dibutuhkan bisa diberi pagar)
