@@ -35,8 +35,8 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/registrasi', [LoginController::class, 'registrasi']);
     Route::post('/registrasi', [LoginController::class, 'store']);
 
-    Route::get('/lupa-password', [LoginController::class, 'lupa']);
-    Route::post('/lupa-password', [LoginController::class, 'otp']);
+    Route::get('/lupa-password/{id}', [LoginController::class, 'lupa']);
+    Route::post('/lupa-password/{id}', [LoginController::class, 'otp']);
 });
 
 Route::middleware(['auth'])->group(function () {

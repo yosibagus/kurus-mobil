@@ -65,32 +65,35 @@
                             <input type="email" placeholder="Email" name="email" class="form-control" required>
                         </div>
                         <div class="input-group">
-                            <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" class="form-control" required>
+                            <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" class="form-control"
+                                required>
                         </div>
                         <div class="input-group">
-                            <input type="number" placeholder="No WhatsApp" name="no_hp" class="form-control" required>
+                            <input type="number" placeholder="No WhatsApp" name="no_hp" class="form-control"
+                                required>
                         </div>
                         <div class="input-group">
                             <input type="password" placeholder="Password" id="dz-password" name="password"
                                 class="form-control be-0" required>
                             <span class="input-group-text show-pass">
-                                <i class="fa fa-eye-slash"></i>
-                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-eye-slash toggle-password" toggle="#dz-password"></i>
                             </span>
                         </div>
                         <div class="input-group">
-                            <input type="password" placeholder="Ulangi Password" id="repeat-password" name="repeat_password"
-                                class="form-control be-0" required>
-                                <span class="input-group-text show-pass">
-                                    <i class="fa fa-eye-slash"></i>
-                                    <i class="fa fa-eye"></i>
-                                </span>
+                            <input type="password" placeholder="Ulangi Password" id="repeat-password"
+                                name="repeat_password" class="form-control be-0" required>
+                            <span class="input-group-text show-pass">
+                                <i class="fa fa-eye-slash toggle-password" toggle="#repeat-password"></i>
+                            </span>
                         </div>
+                        <div id="password-match-message" class="text-danger"></div>
+
                         <div class="input-group">
                             <input type="text" placeholder="Alamat" name="alamat" class="form-control" required>
                         </div>
                         <div class="input-group">
-                            <input type="checkbox" id="accept-terms" required> <label for="accept-terms">Saya menerima syarat dan ketentuan</label>
+                            <input type="checkbox" id="accept-terms" required> <label for="accept-terms">Saya menerima
+                                syarat dan ketentuan</label>
                         </div>
                         <div class="input-group">
                             <button type="submit" class="btn mt-2 btn-primary w-100 btn-rounded">Daftar</button>
@@ -105,7 +108,8 @@
         <!-- Footer -->
         <footer class="footer fixed">
             <div class="container">
-                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali ke Login</a>
+                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali ke
+                    Login</a>
             </div>
         </footer>
         <!-- Footer End -->
@@ -198,9 +202,57 @@
     <script src="/mobile-app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/mobile-app/assets/js/settings.js"></script>
     <script src="/mobile-app/assets/js/custom.js"></script>
-
     <script>
-         function togglePasswordVisibility() {
+        $(document).ready(function() {
+            // Toggle password visibility
+            $('.toggle-password').click(function() {
+                var input = $($(this).attr('toggle'));
+                var icon = $(this);
+
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash');
+                    icon.addClass('fa-eye');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye');
+                    icon.addClass('fa-eye-slash');
+                }
+            });
+
+            // Password match validation
+            $('#repeat-password').on('keyup', function() {
+                var password = $('#dz-password').val();
+                var repeatPassword = $(this).val();
+
+                if (password !== repeatPassword) {
+                    $('#password-match-message').text('Passwords do not match');
+                    $('button[type="submit"]').prop('disabled', true);
+                } else {
+                    $('#password-match-message').text('');
+                    $('button[type="submit"]').prop('disabled', false);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#repeat-password').on('keyup', function() {
+                var password = $('#dz-password').val();
+                var repeatPassword = $(this).val();
+
+                if (password !== repeatPassword) {
+                    $('#password-match-message').text('Password tidak sama!');
+                    $('button[type="submit"]').prop('disabled', true);
+                } else {
+                    $('#password-match-message').text('');
+                    $('button[type="submit"]').prop('disabled', false);
+                }
+            });
+        });
+    </script>
+    <script>
+        function togglePasswordVisibility() {
             const passwordInput = document.getElementById('dz-password');
             const repeatPasswordInput = document.getElementById('repeat-password');
             const eyeIcon = document.getElementById('eye-icon');
@@ -217,24 +269,6 @@
                 eyeIcon.style.display = 'none';
                 eyeSlashIcon.style.display = 'block';
             }
-        }
-
-        function validateForm() {
-            const password = document.getElementById('dz-password').value;
-            const repeatPassword = document.getElementById('repeat-password').value;
-            const acceptTerms = document.getElementById('accept-terms').checked;
-
-            if (password !== repeatPassword) {
-                alert("Passwords do not match. Please try again.");
-                return false;
-            }
-
-            if (!acceptTerms) {
-                alert("You must accept the terms and conditions.");
-                return false;
-            }
-
-            return true;
         }
     </script>
 

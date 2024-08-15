@@ -90,7 +90,13 @@
         <!-- Footer -->
         <footer class="footer fixed">
             <div class="container">
-                <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali ke Login</a>
+                @if ($role == 'user')
+                    <a href="{{ url('user') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali
+                        ke Login</a>
+                @else
+                    <a href="{{ url('/') }}" class="btn btn-primary light btn-rounded text-primary d-block">Kembali
+                        ke Login</a>
+                @endif
             </div>
         </footer>
         <!-- Footer End -->

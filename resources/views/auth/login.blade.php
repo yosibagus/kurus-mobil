@@ -59,6 +59,13 @@
 
             <div class="container">
                 <div class="account-area">
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Gagal!</strong> {{ session('error') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
                     <form class="" method="POST" action="">
                         @csrf
                         <div class="input-group">
@@ -72,7 +79,7 @@
                                 <i class="fa fa-eye"></i>
                             </span>
                         </div>
-                        <a href="{{ url('lupa-password') }}" class="btn-link d-block text-center">Lupa Password?</a>
+                        <a href="{{ url('lupa-password/user') }}" class="btn-link d-block text-center">Lupa Password?</a>
                         <div class="input-group">
                             <button type="submit" class="btn mt-2 btn-primary w-50 btn-rounded">Masuk</button>
                             <br>
@@ -129,7 +136,7 @@
             });
         });
     </script>
-    
+
 </body>
 
 </html>

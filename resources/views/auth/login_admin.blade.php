@@ -58,23 +58,32 @@
                 <div class="col-md-5">
                     <form method="POST" action="">
                         @csrf
-                        
+
                         <span class="d-block fs-18 fw-semibold text-center or mb-4">
                             <span class="bg-body-bg d-inline-block py-1 px-3">Administrator</span>
                         </span>
                         <div class="card bg-white border-0 rounded-10 mb-4">
                             <div class="card-body p-4">
+                                @if (session('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Gagal!</strong> {{ session('error') }}.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="form-group mb-4">
                                     <label class="label">Email</label>
-                                    <input type="email" class="form-control h-58" name="email" placeholder="Masukkan Email Anda" required>
+                                    <input type="email" class="form-control h-58" name="email"
+                                        placeholder="Masukkan Email Anda" required>
                                 </div>
-                                
+
                                 <div class="form-group mb-0">
                                     <label class="label">Password</label>
                                     <div class="form-group">
                                         <div class="password-wrapper position-relative">
-                                            <input type="password" id="password" name="password" class="form-control h-58 text-dark"
-                                                value="" placeholder="Masukkan Password Anda">
+                                            <input type="password" id="password" name="password"
+                                                class="form-control h-58 text-dark" value=""
+                                                placeholder="Masukkan Password Anda">
                                             <i style="color: #A9A9C8; font-size: 16px; right: 15px !important;"
                                                 class="ri-eye-off-line password-toggle-icon translate-middle-y top-50 end-0 position-absolute"
                                                 aria-hidden="true"></i>
@@ -84,12 +93,12 @@
                             </div>
                         </div>
                         <div class="d-sm-flex justify-content-between mb-4">
-                            <a href="{{ url('lupa-password') }}"
+                            <a href="{{ url('lupa-password/admin') }}"
                                 class="fs-16 text-primary text-decoration-none mt-2 mt-sm-0 d-block">
                                 Lupa Password?
                             </a>
                         </div>
-                        
+
                         <button type="submit"
                             class="btn btn-primary fs-16 fw-semibold text-dark heading-fornt py-2 py-md-3 px-4 text-white w-100">
                             Login
@@ -100,8 +109,8 @@
                             class="btn btn-warning fs-16 fw-semibold text-dark heading-fornt py-2 py-md-3 px-4 w-100">
                             Reset
                         </button>
-                        
-                        
+
+
                     </form>
                 </div>
             </div>

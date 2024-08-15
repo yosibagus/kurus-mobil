@@ -84,6 +84,50 @@
                             </tfoot>
                         </table>
                     </div>
+                @else
+                    <div class="table-responsive">
+                        <table class="table align-middle" id="orderTable">
+                            <thead>
+                                <tr>
+                                    <th width="10">No</th>
+                                    <th>Nama</th>
+                                    <th>Transaksi</th>
+                                    <th>TGL Pesan</th>
+                                    <th>TGL Mulai</th>
+                                    <th>Pembayaran</th>
+                                    <th>Status</th>
+                                    <th>Tentor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pesanan as $get)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $get->nama_lengkap }}</td>
+                                        <td>
+                                            #{{ $get->no_transaksi }} <br>
+                                            {{ $get->nama_paket }}
+                                        </td>
+                                        <td>{{ date('d-m-Y', strtotime($get->tgl_pesan)) }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($get->req_tgl_mulai)) }}</td>
+                                        <td>
+                                            Rp{{ number_format($get->total, 0, 2, '.') }} <br>
+                                            <small>{{ $get->status_bayar }}</small>
+                                        </td>
+                                        <td>{{ $get->status_pelatihan }}</td>
+                                        <td>{{ $get->req_tentor }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td colspan="4"></td>
+                                    <td>Rp{{ number_format($sum, 0, 2, '.') }}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 @endif
             </div>
         </div>
