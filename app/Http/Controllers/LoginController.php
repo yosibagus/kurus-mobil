@@ -73,7 +73,7 @@ class LoginController extends Controller
         return view('auth.lupa_password', $data);
     }
 
-    public function otp(Request $request)
+    public function otp($role, Request $request)
     {
         $user = User::where('email', $request->email)->first();
         $token = 'wvjn!qq5zgtszQcs934E';
@@ -110,12 +110,12 @@ class LoginController extends Controller
             $data = json_decode($response);
 
             if ($data->status == 1) {
-                return redirect('lupa-password')->with('success', 'Verifikasi berhasil dikirim ke no Hp anda');
+                return redirect('lupa-password/' . $role)->with('success', 'Verifikasi berhasil dikirim ke no Hp anda');
             } else {
-                return redirect('/lupa-password')->with('error', 'Coba bererapa saat lagi');
+                return redirect('lupa-password/' . $role)->with('error', 'Coba bererapa saat lagi');
             }
         } else {
-            return redirect('/lupa-password')->with('error', 'Email tidak ditemukan');
+            return redirect('lupa-password/' . $role)->with('error', 'Email tidak ditemukan');
         }
     }
 }
